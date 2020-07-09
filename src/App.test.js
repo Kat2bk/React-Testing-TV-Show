@@ -1,5 +1,5 @@
 import React from "react";
-import {render, fireEvent} from "@testing-library/react";
+import {render, fireEvent, wait} from "@testing-library/react";
 import App from "./App";
 import {fetchSHow as mockFetchShow} from "./api/fetchShow";
 
@@ -7,6 +7,7 @@ jest.mock("./api/fetchShow");
 
 
 const data = {
+    data: {
     "id": 2993,
 "url": "http://www.tvmaze.com/shows/2993/stranger-things",
 "name": "Stranger Things",
@@ -602,6 +603,7 @@ const data = {
 }
 }
 ]
+}
 }
 }
 
