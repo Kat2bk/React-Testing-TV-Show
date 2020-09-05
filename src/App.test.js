@@ -1,9 +1,12 @@
 import React from "react";
 import {render, fireEvent, wait} from "@testing-library/react";
 import App from "./App";
-import {fetchSHow as mockFetchShow} from "./api/fetchShow";
+import axios from "axios";
+import {fetchShow as mockFetchShow} from "./api/fetchShow";
 
-jest.mock("./api/fetchShow");
+// jest.mock("./api/fetchShow");
+jest.mock('axios')
+
 
 
 const data = {
@@ -606,5 +609,13 @@ const data = {
 }
 }
 }
+
+test('should fetch episodes', () => {
+    axios.get.mockResolvedValue(data);
+    expect.assertions(1);
+    return mockFetchShow().then(res => expect(res).toBe(data))
+})
+
+// const {getAllByText} = render(mockFetchShow)
 
 
